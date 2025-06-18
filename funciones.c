@@ -298,6 +298,10 @@ void busqueda_eliminar(int amount){
     for (int i = 0; i < amount; i++){
         if (libros[i].id == id_search){
             found = 1;
+            if (strcmp(libros[i].state, "Prestado") == 0){
+                printf("\x1B[33mLibro prestado no se puede eliminar\x1B[0m\n");
+                break;
+            }
             eliminar_libro(&libros[i]);
             printf("Libro eliminado\n");
             break;
